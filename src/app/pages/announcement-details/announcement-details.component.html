@@ -1,0 +1,41 @@
+<div class="announcement-details-wraper flex-row offset" *ngIf="announcement; else noAnnouncement">
+	<div class="announcement-details-container">
+		<div class="flex-col">
+			<span> Title:</span>
+			<h2>{{announcement.title}}</h2>
+		</div>
+
+		<div class="flex-col">
+			<span> Description:</span>
+			<p>{{announcement.description}}</p>
+		</div>
+
+		<div class="announcement-details flex-row">
+			<button [routerLink]="['/announcements']" class="btn go-back">back</button>
+			<span>added: {{announcement.timeAdded | date:'mediumDate'}}</span>
+		</div>
+	</div>
+	<div class="similar-announcements-container flex-col">
+		<h3 class="similar-header" *ngIf="announcements.length; else similarAnnouncement">&nbsp;Similar:</h3>
+		<div class="similar-announcement flex-col" *ngFor="let announcement of announcements">
+			<div class="announcement-similar-info">
+				<span> Title:</span>
+				<h4>{{announcement.title}}</h4>
+				<span> Description:</span>
+				<p>{{announcement.description}}</p>
+			</div>
+			<span>{{announcement.timeAdded | date:'mediumDate' }}</span>
+		</div>
+	</div>
+</div>
+
+<ng-template #noAnnouncement>
+	<app-loading></app-loading>
+</ng-template>
+
+<ng-template #similarAnnouncement>
+	<div class="flex-col no-similar-announcements">
+		<h3 class="similar-header">&nbsp;Similar:</h3>
+		<p>No similar yet</p>
+	</div>
+</ng-template>

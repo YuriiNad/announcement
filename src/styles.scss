@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+@import "src/theme/variables.scss";
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+///////////////////////
+.btn {
+	border-radius: 5px;
+	font-size: 1rem;
+	padding: .5rem;
+	letter-spacing: 0.170rem;
+	border: none;
+	background: none;
+	color: black;
+}
+.btn-add {
+	background-color: $add;
+}
+
+.go-back {
+	background-color: $back;
+}
+
+.btn-edit {
+	align-self: stretch;
+	padding: 0 5px;
+	border-radius: 5px;
+	background-color: $update;
+}
+
+.btn-remove {
+	position: relative;
+	width: 25px;
+	height: 20px;
+	background-color: $remove;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	transition: 0.3s;
+	background-color: $hover;
+}
+span, a {
+	color: $success_light;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	color: $hover;
+}
+
+///INPUT
+.custom-input {
+	// max-width: 300px;
+	height: 2rem;
+	font-size: 1rem;
+	padding: 0 .5rem;
+	border-radius: .5rem;
+	border: 2px solid $success_light;
+}
+
+///SCROLL
+::-webkit-scrollbar {
+	width: 7px; 
+}
+::-webkit-scrollbar-track {
+	background-color: $primary;
+}
+::-webkit-scrollbar-thumb {
+	background: $success_light;
+	border-radius: 15px;
+}
+
+///FLEX
+.flex-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}

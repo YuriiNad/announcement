@@ -1,0 +1,21 @@
+<div class="add-announcement-container flex-col" *ngIf="isLoaded; else noAnnouncement">
+	<form [formGroup]="updateAnnouncement" class="add-announcement-form flex-col" (ngSubmit)="editAnnouncement()">
+		<div class="title-container flex-col">
+			<label for="title">Title:</label>
+			<input autocomplete="off" class="custom-input" id="title" type="text" [(ngModel)]="announcement.title"
+				formControlName='title'>
+		</div>
+		<div class="description-container flex-col">
+			<label for="description">Description:</label>
+			<input autocomplete="off" class="custom-input" id="description" type="text"
+				[(ngModel)]="announcement.description" formControlName='description'>
+		</div>
+		<div class="form-actions flex-row">
+			<button type="submit" class="btn btn-edit">edit</button>
+			<button class="btn go-back" [routerLink]="['/announcements']">back</button>
+		</div>
+	</form>
+</div>
+<ng-template #noAnnouncement>
+	<app-loading></app-loading>
+</ng-template>

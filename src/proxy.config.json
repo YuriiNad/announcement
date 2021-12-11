@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "https://announcement-task-default-rtdb.europe-west1.firebasedatabase.app",
+    "secure": false,
+    "logLevel": "info",
+    "changeOrigin": true
+  }
+}
