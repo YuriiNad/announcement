@@ -36,7 +36,6 @@ export class AddAnnouncementComponent implements OnInit {
 
 		this._announc.addNewAnnouncement(newAnnouncement)
 			.subscribe((annouc: Announcement) => {
-				console.log(annouc);
 
 				this.addAnnouncement.reset();
 			}, err => console.error(err));
