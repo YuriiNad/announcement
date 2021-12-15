@@ -20,13 +20,10 @@ export class AnnouncementDetailsComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		// setTimeout(() => {
-		this.getCurrentAnnouncement();
-		this.getTopThreeAnnouncements();
-		// }, 1000);
-
-
-
+		setTimeout(() => {
+			this.getCurrentAnnouncement();
+			this.getTopThreeAnnouncements();
+		}, 1000);
 	}
 
 	getCurrentAnnouncement(): void {
@@ -52,24 +49,27 @@ export class AnnouncementDetailsComponent implements OnInit {
 	}
 
 	similarAnnouncements(anoncDetailed: Announcement, announcements: Announcement[]): Announcement[] {
-		let anoncTitle = anoncDetailed.title?.split(' ').filter((elem: string) => elem.length > 3);
-		let anoncDescr = anoncDetailed.description?.split(' ').filter((elem: string) => elem.length > 3);
+		let anoncTitle = anoncDetailed.title?.toLowerCase().split(' ').filter((elem: string) => elem.length >= 2);
+		let anoncDescr = anoncDetailed.description?.toLowerCase().split(' ').filter((elem: string) => elem.length >= 2);
+
+
 
 
 		announcements.map((e) => {
-			let announcementTitle = e.title?.split(' ').filter((elem: string) => elem.length > 3);
-			let announcementDesc = e.description?.split(' ').filter((elem: string) => elem.length > 3);
+			let announcementTitle = e.title?.toLowerCase().split(' ').filter((elem: string) => elem.length >= 2);
+			let announcementDesc = e.description?.toLowerCase().split(' ').filter((elem: string) => elem.length >= 2);
 
 			if (anoncTitle?.some((v) => announcementTitle?.includes(v)) &&
-				anoncTitle?.some((v) => announcementDesc?.includes(v)) &&
-				anoncDescr?.some((v) => announcementDesc?.includes(v)) &&
 				anoncDescr?.some((v) => announcementDesc?.includes(v))) {
 
 				this.announcements.push(e)
+				this.announcements.sort((a, b) => Date.parse(b.timeAdded) - Date.parse(a.timeAdded))
+
 			}
 		})
 		if (this.announcements.length > 3) {
-			this.announcements.length = 3
+			this.announcements.sort((a, b) => Date.parse(b.timeAdded) - Date.parse(a.timeAdded))
+			this.announcements.length = 3;
 		}
 
 		return this.announcements
