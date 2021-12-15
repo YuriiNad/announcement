@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Announcement } from 'src/app/models/announcement';
 import { AnnounceService } from 'src/app/services/announce.service';
 
@@ -13,6 +14,7 @@ export class AddAnnouncementComponent implements OnInit {
 	public isLoaded = false;
 	constructor(
 		private _announc: AnnounceService,
+		private router: Router,
 	) { }
 
 	ngOnInit(): void {
@@ -38,6 +40,11 @@ export class AddAnnouncementComponent implements OnInit {
 
 				this.addAnnouncement.reset();
 			}, err => console.error(err));
+
+		setTimeout(() => {
+			this.router.navigate(['/announcements'])
+		}, 700);
+
 	}
 
 	getTimeStamp() {
