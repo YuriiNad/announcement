@@ -1,7 +1,7 @@
 import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { Announcement } from 'src/app/models/announcement';
 import { AnnounceService } from 'src/app/services/announce.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, Data } from '@angular/router';
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
@@ -35,7 +35,7 @@ export class AnnouncementComponent implements OnInit, DoCheck {
 	getAllAnnouncements(): void {
 		this._announc.getAllAnnouncements()
 			.subscribe((announcements: Announcement[]) => {
-				this.announcements = announcements.reverse()
+				this.announcements = announcements.sort((a, b) => Date.parse(b.timeAdded) - Date.parse(a.timeAdded))
 
 				if (this.toLoadMore && this.announcements.length >= 4 && !this.searchAnnounce) {
 					this.announcements = announcements
