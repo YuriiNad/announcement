@@ -35,7 +35,7 @@ export class AnnouncementComponent implements OnInit, DoCheck {
 	getAllAnnouncements(): void {
 		this._announc.getAllAnnouncements()
 			.subscribe((announcements: Announcement[]) => {
-				this.announcements = announcements
+				this.announcements = announcements.reverse()
 
 				if (this.toLoadMore && this.announcements.length >= 4 && !this.searchAnnounce) {
 					this.announcements = announcements
