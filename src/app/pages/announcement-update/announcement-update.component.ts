@@ -39,10 +39,9 @@ export class AnnouncementUpdateComponent implements OnInit {
 			...this.updateAnnouncement.value,
 			timeAdded: this.getTimeStamp(),
 		}
+
 		this._announc.editAnnouncement(this.announcementId, updatedAnnouncement)
 			.subscribe((updAnnouc: Announcement) => {
-				console.log(updAnnouc);
-				this.updateAnnouncement.reset();
 			}, err => console.error(err))
 
 		setTimeout(() => {
@@ -60,7 +59,6 @@ export class AnnouncementUpdateComponent implements OnInit {
 				const currAnnouncement = announcements.find(announcement => announcement.id === this.announcementId)
 				if (currAnnouncement) {
 					this.announcement = currAnnouncement
-
 				}
 			})
 	}
