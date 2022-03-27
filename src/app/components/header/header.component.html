@@ -1,12 +1,11 @@
-<div class="header-container flex-row offset">
-	<div class="add-announcement-container flex-row">
-		<button class="btn btn-add" (click)="addNewAnnouncement()">add</button>
-	</div>
-	<div class="search-container flex-row">
-		<div class="search-form">
-			<input autocomplete="off" [(ngModel)]="searchAnnounce" class="custom-input" id="search-inp" type="text"
-				placeholder="Search..." tabindex='-1'>
-			<img src="assets/img/search-img.svg" alt="search">
+<header class="bg-brown-400">
+	<div class="flex justify-between py-4 content-offset">
+		<div class="flex items-center">
+			<a class="text-2xl mr-8" routerLink="/create">Generate</a>
+			<a class="text-2xl mr-8" routerLink="/all-jokes">Jokes</a>
 		</div>
+		<a href="https://github.com/YuriiNad" target="_blank">
+			<img class="min-w-[35px] ml-3" src="assets/img/github.svg" alt="github-download">
+		</a>
 	</div>
-</div>
+</header>

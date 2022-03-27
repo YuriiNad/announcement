@@ -1,0 +1,13 @@
+<div class="w-full xs:max-w-[600px] mt-3 p-4 bg-teal-juniper rounded-lg hover:bg-bluegray-rockblue duration-300">
+	<h3 class="font-bold text-center">Joke preview</h3>
+	<div>
+		<span>Title:</span>
+		<h4>{{previewedJoke?.title}}</h4>
+		<span>Description:</span>
+		<p>{{previewedJoke?.description}}</p>
+	</div>
+	<div class="flex flex-col justify-between 2xs:flex-row bg-green-sprout p-1  mt-2 rounded-md">
+		<p class="font-medium"><span>Added: </span>{{previewedJoke?.timeAdded | date:'mediumDate'}}.</p>
+		<p class="font-medium"><span>Author: </span>{{previewedJoke?.author}}.</p>
+	</div>
+</div>

@@ -1,0 +1,16 @@
+<div
+	class="w-full relative bg-teal-juniper rounded-lg p-4 pt-8"
+>
+	<button class="absolute w-8 h-8 right-1 top-1 p-0 hover:text-red hover:bg-black">X</button>
+	<h3 class="text-center text-xl font-semibold">Joke# {{number}}.</h3>
+	<div>
+		<span class="mt-2">Title:</span>
+		<p>{{joke?.title}}</p>
+		<span class="mt-2">Description: </span>
+		<p class="description-row">{{joke?.description}}</p>
+	</div>
+	<div class="flex justify-between mt-2 tablet:flex-col">
+		<p><span>Added:</span> {{joke?.timeAdded | date:'mediumDate'}}.</p>	
+		<p><span>Author:</span> {{joke?.author}}.</p>
+	</div>
+</div>

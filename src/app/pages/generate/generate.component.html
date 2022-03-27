@@ -1,0 +1,12 @@
+<div class="h-clear w-full flex flex-col items-center content-offset"> 
+	<header>
+		<h2 class="text-center">Here you can create your own joke or generate it randomlly with free chucknorris.io</h2>
+		<p class="text-center">Chuck Norris facts are satirical factoids about martial artist and actor Chuck Norris that have become an Internet phenomenon and as a result have become widespread in popular culture.</p>
+	</header>
+	<img class="mt-2" alt="Chuck Norris" src="https://api.chucknorris.io/img/chucknorris_logo_coloured_small@2x.png">
+	<div class="w-full flex-col flex justify-between xs:flex-row">
+		<button routerLink="create-own" class="min-w-btn mt-3 bg-orange-flamingo order-2 border-black">Create your own</button>
+		<button routerLink="create-random" class="min-w-btn mt-3 bg-orange-flamingo border-2 border-black">Create randomly</button>
+	</div>
+	<router-outlet></router-outlet>
+</div>

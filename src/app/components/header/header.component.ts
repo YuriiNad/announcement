@@ -1,35 +1,14 @@
-import { AfterContentChecked, Component, DoCheck, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { AnnounceService } from 'src/app/services/announce.service';
-import { SharedService } from 'src/app/services/shared.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'app-header',
-	templateUrl: './header.component.html',
-	styleUrls: ['./header.component.scss']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
 })
-export class HeaderComponent implements OnInit, DoCheck {
+export class HeaderComponent implements OnInit {
 
-	public searchAnnounce = '';
+  constructor() { }
 
-	constructor(
-		private router: Router,
-		private _announc: AnnounceService,
-		private _share: SharedService,
-	) { }
+  ngOnInit(): void {
+  }
 
-	ngOnInit(): void {
-	}
-
-	ngDoCheck() {
-		this.setAnnouncement();
-	}
-
-	addNewAnnouncement() {
-		this.router.navigate(['/add-announcement']);
-	}
-
-	setAnnouncement(): void {
-		this._share.setAnnouncement(this.searchAnnounce);
-	}
 }

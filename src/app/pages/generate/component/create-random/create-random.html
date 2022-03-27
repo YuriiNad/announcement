@@ -1,0 +1,59 @@
+<div class="content-offset">
+	<div class="mb-4">
+		<h2 class="mb-2 ">Introduction.....</h2>
+		<p class="text-base">In this section you can generate a joke randomly using API, all you need to do it just set a title of joke and pote it if need.</p>
+	</div>
+	<div>
+		<div *ngIf="!errorMessage">
+			<div class="p-4 bg-teal-juniper rounded-lg">
+				<h2 class="text-center font-medium mb-2">Create your own joke - randomly</h2>
+				<form [formGroup]="joke" (ngSubmit)="addJoke()">
+					<fieldset>
+						<div class="flex flex-col">
+							<label for="title">Title:</label>
+							<input 
+								(focusin)="clear()" 	
+								type="text" 
+								id="title" 
+								autocomplete="off" 
+								formControlName='title'
+								required
+							>
+						</div>
+					</fieldset>
+					<div class="flex flex-col xs:flex-row mt-4 justify-between">
+						<button 
+							*ngIf="isReadyToPost"
+							class="min-w-btn bg-green-sprout mb-2 xs:mb-0 border-2 border-black" 
+							type="submit"
+							[disabled]="!joke.value.title.trim()"
+						>Post joke
+						</button>
+						<button 
+							(click)="generateJoke()"
+							*ngIf="!isReadyToPost"
+							class="min-w-btn bg-green-sprout mb-2 xs:mb-0 border-2 border-black" 
+							type="button"
+						>Create joke
+						</button>
+						<button 
+							routerLink="/create/create-own"
+							type="button" 
+							class="min-w-btn bg-brown-300 border-2 border-black" 
+						>Create your own
+						</button>
+					</div>
+				</form>
+			</div>
+			<p class="text-red text-base mt-3" *ngIf="isInvalid"> 
+				<span class="font-bold">Error:</span> Title can't be empty.
+			</p>
+		</div>
+		<div *ngIf="errorMessage" class="text-red text-center font-medium">
+			<h2>Error</h2>		
+			<p>{{errorMessage}}</p>
+		</div>
+		<preview-joke *ngIf="generatedJoke?.title && !errorMessage" [previewedJoke]="generatedJoke"></preview-joke>
+	</div>
+</div>
+
