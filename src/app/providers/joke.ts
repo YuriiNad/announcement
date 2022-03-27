@@ -19,7 +19,8 @@ export class JokeService {
   }
 
   async addJoke(joke: Joke): Promise<Joke> {
-    const resp =  await this._api.post('/api/jokes.json', joke);
+    // const resp =  await this._api.post('/api/jokes.json', joke);
+    const resp =  await this._api.post(`${this.jokeURL}jokes.json`, joke);
     return {...joke, id: resp.name};
   }
 
@@ -33,7 +34,8 @@ export class JokeService {
   }
 
   async getJokes(): Promise<Joke[]> {
-    const responce = await this._api.get('/api/jokes.json');
+    // const responce = await this._api.get('/api/jokes.json');
+    const responce = await this._api.get(`${this.jokeURL}jokes.json`);
     if(!responce) {
       return []
     }else {
@@ -43,7 +45,8 @@ export class JokeService {
   }
 
   async removeJoke(joke: Joke): Promise<Joke> {
-    const resp =  await this._api.delete(`/api/jokes/${joke.id}.json`);
+    // const resp =  await this._api.delete(`/api/jokes/${joke.id}.json`);
+    const resp =  await this._api.delete(`${this.jokeURL}jokes/${joke.id}.json`);
     return resp;
   }
 
