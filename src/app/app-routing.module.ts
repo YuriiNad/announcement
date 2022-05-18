@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-	{ path: '', redirectTo: 'create', pathMatch: 'full' },
-	{ path: 'create', loadChildren: () => import('./pages/generate/generate.module').then(m => m.GenerateModule) },
-	{ path: 'all-jokes', loadChildren: () => import('./pages/all-jokes/all-jokes.module').then(m => m.AllJokesModule) },
-	{ path: '**', component: NotFoundComponent },
+	{ path: '', redirectTo: 'home', pathMatch: 'full' },
+	{ path: 'home', component:  AppComponent },
+	{ path: '**', component: AppComponent },
 
 ];
 
