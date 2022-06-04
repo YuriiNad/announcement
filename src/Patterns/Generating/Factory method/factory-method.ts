@@ -1,4 +1,8 @@
-//fabric pattern
+//Fabric pattern
+//-- Використовуємо коли нам потрібно 
+//створити багато обєктів з однаковою структурою
+//-- Недоліки: багато коду, велика ієрархія 
+//-- Плюси: інкапсуляція 
 interface PlanetStructure {
 	name: string,
 	diameter: number,
@@ -30,7 +34,7 @@ class Saturn implements PlanetStructure {
 }
 
 export class Planet {
-	create(name?: string): PlanetStructure {
+	static create(name?: string): PlanetStructure {
 		switch(name) {
 			case 'Mars': return new Mars();
 			case 'Jupiter': return new Jupiter();
