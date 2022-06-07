@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbsConstructor, MacFactory, WinFactory } from 'src/Patterns/Generating/Abstract Factory/abstract-factory';
 import { Planet } from 'src/Patterns/Generating/Factory method/factory-method';
 
 @Component({
@@ -10,8 +11,10 @@ export class AppComponent implements OnInit {
 	title = 'Announcement';
 
 	ngOnInit(): void {
-		//-- Fabric
+		//-- Abstract Factory
 		const earth = Planet.create();
-		console.log(earth);
+		//-- Abstract Factory
+		const macFabc = new MacFactory();
+		const macElements = new AbsConstructor(macFabc)
 	}
 }
