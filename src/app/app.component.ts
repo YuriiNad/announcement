@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbsConstructor, MacFactory, WinFactory } from 'src/Patterns/Generating/Abstract Factory/abstract-factory';
 import { UserBuilder } from 'src/Patterns/Generating/Builder/builder';
 import { Planet } from 'src/Patterns/Generating/Factory method/factory-method';
+import { Car } from 'src/Patterns/Generating/Prototype/prototype';
+import { Singleton } from 'src/Patterns/Generating/Singleton/singleton';
 
 @Component({
 	selector: 'app-root',
@@ -23,7 +25,16 @@ export class AppComponent implements OnInit {
 			.setPhone(67273907539475)
 			.setSalary(10000)
 			.build();
+		//-- Prototype
+		const tesla = new Car('Tesla', 'gray', 20000, true)
+		const teslaXL = tesla.getPrototype();
+		teslaXL.model = 'teslaXL'
+		teslaXL.color = 'red'
+		teslaXL.price = 50000;
+		//--Singleton
+		const V1 = Singleton.getInstance();
+		const V2 = Singleton.getInstance();
+		
 
-			
 	}
 }
