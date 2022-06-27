@@ -4,7 +4,7 @@ import { UserBuilder } from 'src/Patterns/Generating/Builder/builder';
 import { Planet } from 'src/Patterns/Generating/Factory method/factory-method';
 import { Car } from 'src/Patterns/Generating/Prototype/prototype';
 import { Singleton } from 'src/Patterns/Generating/Singleton/singleton';
-
+import { narrowingLogger } from 'src/TS/Narrowing';
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -16,15 +16,18 @@ export class AppComponent implements OnInit {
 	ngOnInit(): void {
 		//-- Abstract Factory
 		const earth = Planet.create();
+
 		//-- Abstract Factory
 		const macFabc = new MacFactory();
 		const macElements = new AbsConstructor(macFabc);
+
 		//-- Builder
 		const user = new UserBuilder('Yurii', 27)
 			.setCountry('UA')
 			.setPhone(67273907539475)
 			.setSalary(10000)
 			.build();
+
 		//-- Prototype
 		const tesla = new Car('Tesla', 'gray', 20000, true)
 		const teslaXL = tesla.getPrototype();
@@ -35,6 +38,5 @@ export class AppComponent implements OnInit {
 		const V1 = Singleton.getInstance();
 		const V2 = Singleton.getInstance();
 		
-
 	}
 }
