@@ -27,7 +27,7 @@ let person: User = {
 }
 delete person.age;
 
-//typeof - використовують, щоб виявити тип змінних 
+//typeof - використовують, щоб виявити тип змінних. Викор для того щоб звернутись до типу елемента
 //--ми сожем витягнути типи з потрібних нам обєктів
 const user = {
 	id: '1',
@@ -76,6 +76,12 @@ type PersonDataType = keyof Person;
 
 function get<T, K extends keyof T>(obj: T, prop: K ): T[K] | undefined {
 	return obj[prop];
+}
+
+//instanceof - перевіряє чи належить елемент до певного класу;
+const obj_2 = {
+	name: 'Yurii',
+	age: 28,
 }
 
 export function typeOperatorsLogger(): void {

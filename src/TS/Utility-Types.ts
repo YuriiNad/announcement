@@ -55,9 +55,10 @@ interface Person_2 {
 	country?: string;
 }
 
-type JustPerson = Pick<Person_2, 'name' | 'country'> // age | country;
+type JustPerson = Required<Pick<Person_2, 'name' | 'country'>> // age | country;
 const person_1: JustPerson = {
-	name: 'Yurii'
+	name: 'Yurii',
+	country: 'UA'
 }
 
 //Omit<Type, Keys> - створює тип вибираючи з Type а тоді видаляючи Keys;

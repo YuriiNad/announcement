@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { bindLogger } from 'src/Context/bind';
 import { AbsConstructor, MacFactory, WinFactory } from 'src/Patterns/Generating/Abstract Factory/abstract-factory';
 import { UserBuilder } from 'src/Patterns/Generating/Builder/builder';
 import { Planet } from 'src/Patterns/Generating/Factory method/factory-method';
 import { Car } from 'src/Patterns/Generating/Prototype/prototype';
 import { Singleton } from 'src/Patterns/Generating/Singleton/singleton';
-import { loggerAbstract } from 'src/TS/Abstaction';
-import { narrowingLogger } from 'src/TS/Narrowing';
+import { loggerEverydayTypes } from 'src/TS/Everyday types';
+import { typeOperatorsLogger } from 'src/TS/Type-Operators';
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
 	title = 'Announcement';
 
 	ngOnInit(): void {
-		//-- Abstract Factory
+		//-- Factory
 		const earth = Planet.create();
 
 		//-- Abstract Factory
@@ -39,7 +40,9 @@ export class AppComponent implements OnInit {
 		const V1 = Singleton.getInstance();
 		const V2 = Singleton.getInstance();
 		
-
-		loggerAbstract();
+		//--Context
+		bindLogger();
+		//--Everyday-Types
+		loggerEverydayTypes();
 	}
 }

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
-
+import '../Context/bind'
 @NgModule({
 	declarations: [
 		AppComponent,
