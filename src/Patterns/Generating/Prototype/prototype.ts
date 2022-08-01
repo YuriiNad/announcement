@@ -1,25 +1,39 @@
-//Прототип - це породжувальний патерн проектування, що дає змогу копіювати об’єкти, не вдаючись у подробиці їхньої реалізації.
-interface CarSkeleton {
-	model: string;
-	color: string;
-	price: number;
-	autopilot: boolean;
+function Auto(this: any, brand: string, price: number, gas: number) {
+	this.brand = brand;
+	this.price = price;
+	this.gas = gas;
+
 }
 
-export class Car implements CarSkeleton {
-	model: string;
-	color: string;
-	price: number;
-	autopilot: boolean;
+Auto.prototype.drive = function() {
+	if(this.gas > 0) {
+		this.gas = this.gas - 20;
+		return this.gas
+	}
+}
 
-	constructor(model: string, color: string, price: number, autopilot: boolean) {
-		this.model = model;
+interface Prototype { // all classes that will be able to be cloned should implement this interface
+	clone(): this; 
+}
+
+class Car implements Prototype {
+	private color: string;
+	private model: string;
+
+	constructor(color: string, model: string) {
 		this.color = color;
-		this.price = price;
-		this.autopilot = autopilot;
+		this.model = model;
 	}
 
-	getPrototype():CarSkeleton {
-		return new Car(this.model, this.color, this.price, this.autopilot)
+	clone(): this {
+		const clone = new Car(this.color, this.model)
+		return this;
 	}
+}
+
+const Bmw = new Car('red', 'BMW')
+const Bmw_clone = Bmw.clone()
+export function prototypeLogger() {
+	console.log(Bmw);
+	console.log(Bmw_clone);
 }

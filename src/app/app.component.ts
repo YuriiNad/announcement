@@ -3,10 +3,10 @@ import { bindLogger } from 'src/Context/bind';
 import { AbsConstructor, MacFactory, WinFactory } from 'src/Patterns/Generating/Abstract Factory/abstract-factory';
 import { UserBuilder } from 'src/Patterns/Generating/Builder/builder';
 import { Planet } from 'src/Patterns/Generating/Factory method/factory-method';
-import { Car } from 'src/Patterns/Generating/Prototype/prototype';
+import { prototypeLogger } from 'src/Patterns/Generating/Prototype/prototype';
 import { Singleton } from 'src/Patterns/Generating/Singleton/singleton';
+import { adapterLogger } from 'src/Patterns/Structural/Adapter';
 import { loggerEverydayTypes } from 'src/TS/Everyday types';
-import { typeOperatorsLogger } from 'src/TS/Type-Operators';
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
 		//-- Abstract Factory
 		const macFabc = new MacFactory();
 		const macElements = new AbsConstructor(macFabc);
-
 		//-- Builder
 		const user = new UserBuilder('Yurii', 27)
 			.setCountry('UA')
@@ -31,11 +30,7 @@ export class AppComponent implements OnInit {
 			.build();
 
 		//-- Prototype
-		const tesla = new Car('Tesla', 'gray', 20000, true)
-		const teslaXL = tesla.getPrototype();
-		teslaXL.model = 'teslaXL'
-		teslaXL.color = 'red'
-		teslaXL.price = 50000;
+		// prototypeLogger()
 		//--Singleton
 		const V1 = Singleton.getInstance();
 		const V2 = Singleton.getInstance();
@@ -44,5 +39,8 @@ export class AppComponent implements OnInit {
 		bindLogger();
 		//--Everyday-Types
 		loggerEverydayTypes();
+
+		//--Adapter
+		adapterLogger();
 	}
 }

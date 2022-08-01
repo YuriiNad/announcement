@@ -50,7 +50,7 @@ const arr_2 = [
 	'Vasil',
 ] 
 export function loggerEverydayTypes(): void {
-	console.log(arr_2);
+	// console.log(arr_2);
 }
 
 
